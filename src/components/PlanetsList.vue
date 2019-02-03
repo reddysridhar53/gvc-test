@@ -34,7 +34,7 @@
             <tbody>
               <tr class="planet-row" v-for="(planet, index) in planetsList" :key="planet.name" @click="goToPlanet(index)">
                 <td v-for="key in columns" :key="key">
-                  {{ key === 'no' ? index : planet[key] }}
+                  {{ key === 'no' ? ( (page - 1) * 10 + index) : planet[key] }}
                 </td>
               </tr>
             </tbody>
@@ -54,7 +54,7 @@
           columns: state => state.planetsColumns,
           sortOrder: state => state.sortOrder,
           page: state => state.page,
-          totalCount: state => state.totalCount,
+          totalCount: state => Math.floor(state.totalCount / 10),
       }),
       created () {
         this.$store.dispatch('getPlanets', 1);
@@ -78,7 +78,8 @@
           this.$store.dispatch('getPlanets', page);
         },
         goToPlanet (index) {
-          const pageNo = this.page ? ((this.page - 1) * 10) + (index + 1) : index + 1;
+          index = index + 2;
+          const pageNo = this.page ? ((this.page - 1) * 10) + (index) : index;
           this.$router.push(`planets/${pageNo}`)
         }
       },
