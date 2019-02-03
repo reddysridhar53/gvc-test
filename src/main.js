@@ -9,6 +9,7 @@ import PlanetsList from './components/PlanetsList'
 import Planet from './components/Planet'
 
 const routes = [
+    { path: '', component: PlanetsList },
     { path: '/planets', component: PlanetsList },
     { path: '/planets/:planetId', component: Planet }
 ]
