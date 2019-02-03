@@ -85,6 +85,7 @@ export default {
     font-size: 12px;
     color: #4c4c4c;
     cursor: pointer;
+    outline: 0;
     border-radius: 4px;
   }
   .residents-list {

@@ -14,7 +14,7 @@
                 {{page}}/{{totalCount}}
               </div>
               <button class="prev-btn btn"  :class="page > 1 ? 'active': 'in-active'" @click="getPrevPage()">Prev</button>
-              <button class="next-btn btn"  :class="page < totalCount - 1 ? 'active': 'in-active'" @click="getNextPage()">Next</button>
+              <button class="next-btn btn"  :class="page < totalCount ? 'active': 'in-active'" @click="getNextPage()">Next</button>
             </div>
         </div>
         <div class="planets-list-loader" v-if="loadingPlanets">
@@ -107,6 +107,7 @@
       width: 50%;
       font-size: 1em;
       height: 40px;
+      outline: 0;
       margin-bottom: 20px;
   }
   .page-no {
@@ -130,6 +131,7 @@
     opacity: 1;
     border-radius: 4px;
     cursor: pointer;
+    outline: 0;
     transition: 500ms all;
   }
   .btn.in-active {
